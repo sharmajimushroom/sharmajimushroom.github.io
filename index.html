@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sharma Ji Mushroom Farm & Research Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* General */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',sans-serif; }
+body { background:#fdfdfd; color:#333; line-height:1.6; scroll-behavior:smooth; }
+
+/* Banner Marquee */
+.banner { width:100%; background:#4caf50; color:white; padding:12px 0; overflow:hidden; position:relative; }
+.banner p { white-space:nowrap; display:inline-block; padding-left:100%; animation: scroll 30s linear infinite; font-size:1.1rem; font-weight:bold; }
+@keyframes scroll { 0% { transform: translateX(0%); } 100% { transform: translateX(-100%); } }
+
+/* Header */
+header { display:flex; align-items:center; justify-content:space-between; padding:10px 20px; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
+header .logo { display:flex; align-items:center; }
+header .logo img { height:60px; margin-right:15px; border-radius:10px; }
+.brand-text { display:flex; flex-direction:column; line-height:1.1; }
+.brand-main { font-size:1.6rem; font-weight:900; color:#2e7d32; letter-spacing:1px; }
+.brand-sub { font-size:1rem; font-weight:700; color:#4caf50; }
+.brand-tag { font-size:0.85rem; color:#777; }
+header nav { display:flex; gap:20px; font-weight:bold; }
+header nav a { color:#4caf50; text-decoration:none; transition: color 0.3s; }
+header nav a:hover { color:#2e7d32; }
+
+/* Hero */
+.hero-custom { height:420px; background-image:url('https://cdn.discordapp.com/attachments/1437415378958417980/1467363566939148474/IMG_9059.jpg?ex=69801c50&is=697ecad0&hm=3d9910c7cc9cbe63d987a0ab2f1bd13a595bc277a5f3b17c9cc29646deaa5948'); background-size:cover; background-position:center; background-attachment:fixed; display:flex; align-items:center; justify-content:center; }
+.hero-overlay { width:100%; height:100%; background: rgba(0,0,0,0.55); display:flex; align-items:center; justify-content:center; text-align:center; padding:20px; }
+.hero-overlay h1 { color:white; font-size:2.8rem; max-width:1000px; text-shadow:2px 4px 10px rgba(0,0,0,0.8); }
+
+/* Sections */
+section { padding:60px 20px; max-width:1200px; margin:auto; }
+section h2 { text-align:center; font-size:2.2rem; color:#2e7d32; margin-bottom:40px; position:relative; }
+section h2::after { content:''; display:block; width:60px; height:3px; background:#4caf50; margin:10px auto 0; border-radius:2px; }
+
+/* About Us */
+#about p { font-size:1rem; line-height:1.8; color:#555; text-align:justify; margin-bottom:15px; }
+#about .intro { text-align:center; font-weight:bold; font-size:1.1rem; color:#2e7d32; margin-bottom:20px; }
+#about img { display:block; margin:30px auto 0; max-width:100%; border-radius:15px; box-shadow:0 10px 20px rgba(0,0,0,0.1); }
+
+/* Products Grid */
+.products { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:30px; }
+.product { background:white; border-radius:15px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1); display:flex; flex-direction:column; align-items:center; transition:transform 0.3s, box-shadow 0.3s; }
+.product:hover { transform:translateY(-10px); box-shadow:0 15px 35px rgba(0,0,0,0.2); }
+.product img { width:100%; height:180px; border-radius:12px; object-fit:cover; margin-bottom:15px; }
+.product h3 { font-size:1.3rem; color:#2e7d32; margin-bottom:8px; }
+.product p { font-size:0.95rem; color:#555; text-align:center; }
+.price { font-weight:bold; margin-top:5px; color:#388e3c; }
+.quantity { display:flex; gap:10px; margin-top:10px; align-items:center; }
+.quantity button { padding:5px 12px; background:#4caf50; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer; transition:background 0.3s; }
+.quantity button:hover { background:#2e7d32; }
+.quantity input { width:50px; text-align:center; padding:5px; border-radius:5px; border:1px solid #ccc; readonly; }
+
+/* Details Button */
+.details-btn { margin-top:10px; padding:8px 15px; background:#4caf50; color:white; border:none; border-radius:5px; cursor:pointer; }
+.details-btn:hover { background:#2e7d32; }
+
+/* Modal */
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:200; }
+.modal-content { background:white; padding:25px; border-radius:12px; max-width:500px; width:90%; position:relative; text-align:center; }
+.modal-content img { width:200px; border-radius:10px; margin-bottom:15px; }
+.close { position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; color:#333; }
+.close:hover { color:#4caf50; }
+
+/* Summary & Order */
+.summary { margin-top:40px; text-align:center; font-size:1.2rem; color:#333; }
+.summary span { font-weight:bold; color:#2e7d32; }
+.order-btn { display:inline-block; padding:12px 30px; margin-top:20px; background:#4caf50; color:white; border-radius:50px; transition:background 0.3s, transform 0.2s; font-weight:bold; cursor:pointer; border:none; font-size:1.1rem; }
+.order-btn:hover { background:#2e7d32; transform:scale(1.05); }
+
+/* Contact / Footer */
+.contact-info { text-align:center; margin-top:25px; font-size:1rem; color:#555; }
+.contact-info a { color:#2e7d32; font-weight:bold; transition: color 0.3s; }
+.contact-info a:hover { color:#4caf50; }
+footer { background:#2e7d32; color:white; text-align:center; padding:20px; margin-top:40px; font-size:0.9rem; }
+
+@media(max-width:600px){ 
+  .hero-overlay h1 { font-size:2rem; } 
+  header h1 { font-size:1.2rem; } 
+}
+</style>
+</head>
+<body>
+
+<!-- Banner -->
+<div class="banner">
+  <p>Sharma Ji Mushroom Farm & Research Center – Fresh Mushrooms Today! | <span id="datetime"></span></p>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="logo">
+    <img src="images/logo.jpg" alt="Logo">
+    <div class="brand-text">
+      <span class="brand-main">Sharma Ji</span>
+      <span class="brand-sub">Mushroom Farm</span>
+      <span class="brand-tag">& Research Center</span>
+    </div>
+  </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- Order Method Modal -->
+<div id="orderModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeOrderModal()">&times;</span>
+    <h2>Select Order Method</h2>
+    <p style="margin-bottom:20px">How would you like to place your order?</p>
+    <button class="order-btn" style="width:100%;margin-bottom:15px" onclick="orderWhatsApp()">📱 Order via WhatsApp</button>
+    <button class="order-btn" style="width:100%;background:#1565c0" onclick="orderEmail()">📧 Order via Email</button>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero-custom">
+  <div class="hero-overlay">
+    <h1>Fresh Mushrooms & High-Quality Spawn from Saptari, Nepal</h1>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <h2>About Us</h2>
+  <p class="intro">We provide every information required for mushroom cultivation</p>
+  <p>At Sharma Ji Mushroom Farm & Research Center, we are dedicated to empowering farmers, entrepreneurs, and agriculture enthusiasts with complete, practical, and research-based knowledge for mushroom cultivation.
+From understanding mushroom biology to spawn production, cultivation techniques, disease management, and post-harvest handling, we provide every essential piece of information required to grow mushrooms successfully—whether you are a beginner or a commercial producer.
+Rooted in real field experience and continuous research, our mission is to promote modern, sustainable, and profitable mushroom farming. We believe that access to the right knowledge can transform livelihoods, strengthen local agriculture, and create new opportunities for income generation.
+We don’t just grow mushrooms—we grow knowledge, confidence, and success.</p>
+<p>“Growing Mushrooms. Growing Knowledge. Growing Futures.”</p>
+<img src="images/home.jpg" alt="Mushroom Cultivation">
+</section>
+
+<!-- Products -->
+<section id="products">
+  <h2>Our Products - Today's Market Prices</h2>
+  <div class="products">
+    <!-- Example Product -->
+    <div class="product">
+      <img src="images/oyster.jpg" alt="Oyster Mushroom">
+      <h3>Oyster Mushroom</h3>
+      <p>Price: Rs <span id="oysterPrice">200</span> / kg</p>
+      <div class="quantity">
+        <button onclick="decrease('oyster')">-</button>
+        <input type="number" id="oyster" value="0" min="0" readonly>
+        <button onclick="increase('oyster')">+</button>
+      </div>
+      <p>Total: Rs <span id="oysterTotal">0</span></p>
+      <button class="details-btn" onclick="openModal('oyster')">View Details</button>
+    </div>
+    <!-- Add other products here in the same structure (shiitake, button, colorful, spawn) -->
+  </div>
+  <div class="summary">Grand Total: Rs <span id="grandTotal">0</span></div>
+  <button class="order-btn" onclick="openOrderModal()">Place Order</button>
+</section>
+
+<!-- Modals -->
+<div id="modal-oyster" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('oyster')">&times;</span>
+    <h2>Oyster Mushroom</h2>
+    <img src="images/oyster.jpg" alt="Oyster">
+    <p><strong>Protein:</strong> 3.3g per 100g</p>
+    <p><strong>Health Benefits:</strong> Boosts immunity, rich in antioxidants, heart & brain health</p>
+    <p><strong>Cultivation Tips:</strong> Keep spawn hygienic, temp 20–25°C, humidity 80–90%</p>
+  </div>
+</div>
+
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <div class="contact-info">
+    <p>📘 <a href="https://www.facebook.com/b11r1m" target="_blank">Facebook</a> | 
+       📸 <a href="https://www.instagram.com/b11r1m" target="_blank">Instagram</a> | 
+       💬 <a href="https://wa.me/9779810536181" target="_blank">WhatsApp</a>
+    </p>
+    <p>📍 Chhinnamasta 03, Sakhada ,Saptari, Nepal</p>
+    <p>📧 sharmajimushroom@gmail.com | 📞 +977-9810536181</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  &copy; 2026 Sharma Ji Mushroom Farm & Research Center, Saptari, Nepal
+</footer>
+
+<!-- JS -->
+<script>
+// Date & Time
+function updateDateTime() {
+  const now = new Date();
+  document.getElementById('datetime').innerText = now.toLocaleString();
+}
+setInterval(updateDateTime,1000);
+updateDateTime();
+
+// Product Logic
+const prices = { oyster:200 };
+const products = ['oyster'];
+function increase(id){ document.getElementById(id).value=parseInt(document.getElementById(id).value)+1; updateTotal(id);}
+function decrease(id){ const input=document.getElementById(id); if(input.value>0) input.value=parseInt(input.value)-1; updateTotal(id);}
+function updateTotal(id){ const qty=parseInt(document.getElementById(id).value); document.getElementById(id+'Total').innerText=qty*prices[id]; updateGrandTotal();}
+function updateGrandTotal(){ let total=0; products.forEach(id=>{ total+=parseInt(document.getElementById(id).value)*prices[id]; }); document.getElementById('grandTotal').innerText=total; }
+
+// Modals
+function openModal(id){ document.getElementById('modal-'+id).style.display='flex'; }
+function closeModal(id){ document.getElementById('modal-'+id).style.display='none'; }
+window.onclick = function(e){ if(e.target.classList.contains('modal')) e.target.style.display='none'; }
+
+// Order Modal
+function openOrderModal(){ if(parseInt(document.getElementById('grandTotal').innerText)===0){alert("Please select at least one product."); return;} document.getElementById('orderModal').style.display='flex'; }
+function closeOrderModal(){ document.getElementById('orderModal').style.display='none'; }
+
+function generateOrderMessage(){
+  let msg="🧺 *New Mushroom Order*%0A%0A"; let total=0;
+  products.forEach(id=>{
+    let qty=parseInt(document.getElementById(id).value);
+    if(qty>0){ let cost=qty*prices[id]; msg+=`• ${id.toUpperCase()} — ${qty} kg → Rs ${cost}%0A`; total+=cost;}
+  });
+  msg+=`%0A💰 *Grand Total:* Rs ${total}%0A%0A📍 Location: Saptari, Nepal`;
+  return msg;
+}
+
+function orderWhatsApp(){ window.open(`https://wa.me/9779810536181?text=${generateOrderMessage()}`,"_blank"); }
+function orderEmail(){ let body=decodeURIComponent(generateOrderMessage()).replace(/\*/g,""); window.location.href=`mailto:sharmajimushroom@gmail.com?subject=New Mushroom Order&body=${encodeURIComponent(body)}`; }
+</script>
+</body>
+</html>
