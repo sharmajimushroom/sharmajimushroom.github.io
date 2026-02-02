@@ -112,12 +112,53 @@ footer { background:#2e7d32; color:white; text-align:center; padding:20px; margi
 <div id="orderModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeOrderModal()">&times;</span>
-    <h2>Select Order Method</h2>
-    <p style="margin-bottom:20px">How would you like to place your order?</p>
-    <button class="order-btn" style="width:100%;margin-bottom:15px" onclick="orderWhatsApp()">📱 Order via WhatsApp</button>
-    <button class="order-btn" style="width:100%;background:#1565c0" onclick="orderEmail()">📧 Order via Email</button>
+    <h2>Order Details</h2>
+
+    <!-- Customer Name -->
+    <input 
+      type="text" 
+      id="customerName"
+      placeholder="👤 Your Full Name"
+      style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin:10px 0;font-size:1rem"
+      required
+    >
+
+    <!-- Phone Number -->
+    <input 
+      type="tel" 
+      id="customerPhone"
+      placeholder="📞 Phone Number"
+      style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin:10px 0;font-size:1rem"
+      required
+    >
+
+    <!-- Delivery / Pickup -->
+    <select 
+      id="orderType"
+      style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin:10px 0;font-size:1rem"
+    >
+      <option value="">🚚 Select Order Type</option>
+      <option value="Delivery">🚚 Home Delivery</option>
+      <option value="Pickup">🏪 Self Pickup</option>
+    </select>
+
+    <!-- Address -->
+    <textarea 
+      id="customerAddress"
+      placeholder="📍 Delivery Address (required for delivery)"
+      style="width:100%;height:80px;padding:10px;border-radius:8px;border:1px solid #ccc;margin:10px 0;font-size:1rem"
+    ></textarea>
+
+    <button class="order-btn" style="width:100%;margin-bottom:12px" onclick="orderWhatsApp()">
+      📱 Order via WhatsApp
+    </button>
+
+    <button class="order-btn" style="width:100%;background:#1565c0" onclick="orderEmail()">
+      📧 Order via Email
+    </button>
   </div>
 </div>
+
 
 <!-- Hero -->
 <section class="hero-custom">
@@ -219,17 +260,64 @@ function openOrderModal(){ if(parseInt(document.getElementById('grandTotal').inn
 function closeOrderModal(){ document.getElementById('orderModal').style.display='none'; }
 
 function generateOrderMessage(){
-  let msg="🧺 *New Mushroom Order*%0A%0A"; let total=0;
+
+  let name = document.getElementById('customerName').value.trim();
+  let phone = document.getElementById('customerPhone').value.trim();
+  let orderType = document.getElementById('orderType').value;
+  let address = document.getElementById('customerAddress').value.trim();
+
+  if(name === "" || phone === "" || orderType === ""){
+    alert("Please fill Name, Phone and Order Type.");
+    return null;
+  }
+
+  if(orderType === "Delivery" && address === ""){
+    alert("Please enter delivery address.");
+    return null;
+  }
+
+  let msg = "🧺 *New Mushroom Order*%0A%0A";
+  msg += `👤 *Name:* ${name}%0A`;
+  msg += `📞 *Phone:* ${phone}%0A`;
+  msg += `🚚 *Order Type:* ${orderType}%0A`;
+
+  if(orderType === "Delivery"){
+    msg += `📍 *Address:* ${address}%0A`;
+  }
+
+  msg += `%0A🛒 *Items:*%0A`;
+
+  let total = 0;
   products.forEach(id=>{
-    let qty=parseInt(document.getElementById(id).value);
-    if(qty>0){ let cost=qty*prices[id]; msg+=`• ${id.toUpperCase()} — ${qty} kg → Rs ${cost}%0A`; total+=cost;}
+    let qty = parseInt(document.getElementById(id).value);
+    if(qty > 0){
+      let cost = qty * prices[id];
+      msg += `• ${id.toUpperCase()} — ${qty} kg → Rs ${cost}%0A`;
+      total += cost;
+    }
   });
-  msg+=`%0A💰 *Grand Total:* Rs ${total}%0A%0A📍 Location: Saptari, Nepal`;
+
+  msg += `%0A💰 *Grand Total:* Rs ${total}`;
+  msg += `%0A%0A🙏 Sharma Ji Mushroom Farm`;
+
   return msg;
 }
 
-function orderWhatsApp(){ window.open(`https://wa.me/9779810536181?text=${generateOrderMessage()}`,"_blank"); }
-function orderEmail(){ let body=decodeURIComponent(generateOrderMessage()).replace(/\*/g,""); window.location.href=`mailto:sharmajimushroom@gmail.com?subject=New Mushroom Order&body=${encodeURIComponent(body)}`; }
+function orderWhatsApp(){
+  let message = generateOrderMessage();
+  if(message){
+    window.open(`https://wa.me/9779810536181?text=${message}`,"_blank");
+  }
+}
+
+function orderEmail(){
+  let message = generateOrderMessage();
+  if(!message) return;
+  let body = decodeURIComponent(message).replace(/\*/g,"");
+  window.location.href =
+    `mailto:sharmajimushroom@gmail.com?subject=New Mushroom Order&body=${encodeURIComponent(body)}`;
+}
+
 </script>
 </body>
 </html>
