@@ -3,326 +3,323 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sharma Ji Mushroom Farm & Research Center</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<title>Sharma Ji Mushroom Farm | ELITE 🍄🔥</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* General */
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto',sans-serif; }
-body { background:#fdfdfd; color:#333; line-height:1.6; scroll-behavior:smooth; }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#f4fbf6;color:#222;scroll-behavior:smooth;line-height:1.6;}
+a{text-decoration:none;}
 
-/* Banner Marquee */
-.banner { width:100%; background:#4caf50; color:white; padding:12px 0; overflow:hidden; position:relative; }
-.banner p { white-space:nowrap; display:inline-block; padding-left:100%; animation: scroll 30s linear infinite; font-size:1.1rem; font-weight:bold; }
-@keyframes scroll { 0% { transform: translateX(0%); } 100% { transform: translateX(-100%); } }
-
-/* Header */
-header { display:flex; align-items:center; justify-content:space-between; padding:10px 20px; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
-header .logo { display:flex; align-items:center; }
-header .logo img { height:60px; margin-right:15px; border-radius:10px; }
-.brand-text { display:flex; flex-direction:column; line-height:1.1; }
-.brand-main { font-size:1.6rem; font-weight:900; color:#2e7d32; letter-spacing:1px; }
-.brand-sub { font-size:1rem; font-weight:700; color:#4caf50; }
-.brand-tag { font-size:0.85rem; color:#777; }
-header nav { display:flex; gap:20px; font-weight:bold; }
-header nav a { color:#4caf50; text-decoration:none; transition: color 0.3s; }
-header nav a:hover { color:#2e7d32; }
-
-/* Hero */
-.hero-custom { height:420px; background-image:url('/images/home1.jpg'); background-size:cover; background-position:center; background-attachment:fixed; display:flex; align-items:center; justify-content:center; }
-.hero-overlay { width:100%; height:100%; background: rgba(0,0,0,0.55); display:flex; align-items:center; justify-content:center; text-align:center; padding:20px; }
-.hero-overlay h1 { color:white; font-size:2.8rem; max-width:1000px; text-shadow:2px 4px 10px rgba(0,0,0,0.8); }
-
-/* Sections */
-section { padding:60px 20px; max-width:1200px; margin:auto; }
-section h2 { text-align:center; font-size:2.2rem; color:#2e7d32; margin-bottom:40px; position:relative; }
-section h2::after { content:''; display:block; width:60px; height:3px; background:#4caf50; margin:10px auto 0; border-radius:2px; }
-
-/* About Us */
-#about p { font-size:1rem; line-height:1.8; color:#555; text-align:justify; margin-bottom:15px; }
-#about .intro { text-align:center; font-weight:bold; font-size:1.1rem; color:#2e7d32; margin-bottom:20px; }
-#about img { display:block; margin:30px auto 0; max-width:100%; border-radius:15px; box-shadow:0 10px 20px rgba(0,0,0,0.1); }
-
-/* Products Grid */
-.products { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:30px; }
-.product { background:white; border-radius:15px; padding:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1); display:flex; flex-direction:column; align-items:center; transition:transform 0.3s, box-shadow 0.3s; }
-.product:hover { transform:translateY(-10px); box-shadow:0 15px 35px rgba(0,0,0,0.2); }
-.product img { width:100%; height:180px; border-radius:12px; object-fit:cover; margin-bottom:15px; }
-.product h3 { font-size:1.3rem; color:#2e7d32; margin-bottom:8px; }
-.product p { font-size:0.95rem; color:#555; text-align:center; }
-.price { font-weight:bold; margin-top:5px; color:#388e3c; }
-.quantity { display:flex; gap:10px; margin-top:10px; align-items:center; }
-.quantity button { padding:5px 12px; background:#4caf50; color:white; border:none; border-radius:5px; font-weight:bold; cursor:pointer; transition:background 0.3s; }
-.quantity button:hover { background:#2e7d32; }
-.quantity input { width:50px; text-align:center; padding:5px; border-radius:5px; border:1px solid #ccc; readonly; }
-
-/* Details Button */
-.details-btn { margin-top:10px; padding:8px 15px; background:#4caf50; color:white; border:none; border-radius:5px; cursor:pointer; }
-.details-btn:hover { background:#2e7d32; }
-
-/* Modal */
-.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:200; }
-.modal-content { background:white; padding:25px; border-radius:12px; max-width:500px; width:90%; position:relative; text-align:center; }
-.modal-content img { width:200px; border-radius:10px; margin-bottom:15px; }
-.close { position:absolute; top:10px; right:15px; font-size:24px; cursor:pointer; color:#333; }
-.close:hover { color:#4caf50; }
-
-/* Summary & Order */
-.summary { margin-top:40px; text-align:center; font-size:1.2rem; color:#333; }
-.summary span { font-weight:bold; color:#2e7d32; }
-.order-btn { display:inline-block; padding:12px 30px; margin-top:20px; background:#4caf50; color:white; border-radius:50px; transition:background 0.3s, transform 0.2s; font-weight:bold; cursor:pointer; border:none; font-size:1.1rem; }
-.order-btn:hover { background:#2e7d32; transform:scale(1.05); }
-
-/* Contact / Footer */
-.contact-info { text-align:center; margin-top:25px; font-size:1rem; color:#555; }
-.contact-info a { color:#2e7d32; font-weight:bold; transition: color 0.3s; }
-.contact-info a:hover { color:#4caf50; }
-footer { background:#2e7d32; color:white; text-align:center; padding:20px; margin-top:40px; font-size:0.9rem; }
-
-@media(max-width:600px){ 
-  .hero-overlay h1 { font-size:2rem; } 
-  header h1 { font-size:1.2rem; } 
+/* TOP OFFER BANNER */
+#topBanner{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  background:linear-gradient(135deg,#ff5722,#ff9800);
+  color:white;
+  text-align:center;
+  font-weight:700;
+  font-size:1rem;
+  padding:12px 0;
+  z-index:10001;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
+
+/* HEADER */
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 8%;background:#fff;box-shadow:0 6px 25px rgba(0,0,0,.07);position:sticky;top:40px;z-index:999;border-bottom:2px solid #e0f2f1;}
+.logo{display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.2rem;color:#1b5e20;}
+.logo img{height:55px;border-radius:12px;}
+nav a{margin-left:30px;text-decoration:none;font-weight:600;color:#2e7d32;transition:color 0.3s;}
+nav a:hover{color:#43a047;}
+
+/* HERO */
+.hero{height:500px;background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)), url('images/home1.jpg') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 20px;margin-top:40px;}
+.hero h1{color:white;font-size:3rem;max-width:850px;line-height:1.3;text-shadow:2px 6px 12px rgba(0,0,0,.6);}
+
+/* ABOUT */
+section{max-width:1150px;margin:auto;padding:80px 20px;}
+h2{text-align:center;font-size:2.3rem;color:#1b5e20;margin-bottom:60px;position:relative;}
+h2::after{content:'';display:block;width:70px;height:3px;background:#43a047;margin:15px auto 0;border-radius:3px;}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+.about img{width:100%;border-radius:20px;box-shadow:0 20px 45px rgba(0,0,0,.08);}
+.about p{font-size:1.05rem;line-height:1.75;color:#333;}
+.about p b{color:#2e7d32;}
+
+/* PRODUCT */
+.product-container{text-align:center;display:flex;justify-content:center;margin-bottom:120px;}
+.product{position:relative;background:white;padding:35px;border-radius:25px;box-shadow:0 25px 55px rgba(0,0,0,.08);max-width:450px;transition:transform .3s,box-shadow .3s;}
+.product:hover{transform:translateY(-8px);box-shadow:0 30px 70px rgba(0,0,0,.12);}
+.product img{width:100%;height:260px;object-fit:cover;border-radius:16px;margin-bottom:20px;}
+.product h3{font-size:1.6rem;color:#2e7d32;margin-bottom:12px;}
+.product .price{font-size:1.4rem;font-weight:700;color:#43a047;margin-bottom:15px;}
+.qty{display:flex;justify-content:center;gap:15px;margin:20px 0;}
+.qty button{width:40px;height:40px;border:none;background:#43a047;color:white;font-size:20px;border-radius:10px;cursor:pointer;transition:.25s;}
+.qty button:hover{transform:scale(1.1);}
+.qty input{width:80px;text-align:center;font-size:1rem;border-radius:10px;border:1px solid #ddd;}
+
+/* OFFER BADGE */
+.offer-badge{
+  position:absolute;
+  top:15px;
+  left:15px;
+  background:linear-gradient(135deg,#ff5722,#ff9800);
+  color:white;
+  font-weight:700;
+  padding:8px 12px;
+  border-radius:12px;
+  font-size:0.9rem;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  display:none;
+}
+.offer-badge.bounce{animation:bounce 1s infinite;}
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
+
+/* FLOATING CART */
+.cart{
+  position:fixed;
+  top:150px;
+  right:-400px; /* hidden initially */
+  width:350px;
+  max-height:80%;
+  overflow-y:auto;
+  background:white;
+  padding:25px;
+  border-radius:25px;
+  box-shadow:0 25px 55px rgba(0,0,0,.08);
+  transition:right 0.5s ease-in-out;
+  z-index:9999;
+}
+.cart.show{right:30px;}
+.cart h3{color:#2e7d32;margin-bottom:15px;text-align:center;position:relative;}
+.cart h3 .badge{position:absolute;top:-12px;right:-12px;background:red;color:white;border-radius:50%;width:26px;height:26px;font-size:14px;display:flex;align-items:center;justify-content:center;animation:pop .3s;}
+@keyframes pop{0%{transform:scale(0)}50%{transform:scale(1.3)}100%{transform:scale(1)}}
+.cart .item{display:flex;align-items:center;margin:12px 0;gap:12px;}
+.cart .item img{width:50px;height:50px;border-radius:10px;object-fit:cover;}
+.cart .item .info{flex:1;}
+.cart .item .info p{margin-bottom:4px;font-weight:500;}
+.cart .item .qty-controls{display:flex;gap:5px;align-items:center;}
+.cart .item .qty-controls button{width:28px;height:28px;font-size:16px;}
+.cart select,.cart input,.cart textarea{width:100%;padding:12px;margin:8px 0;border-radius:12px;border:1px solid #ddd;font-size:1rem;outline:none;}
+.cart select:focus,.cart input:focus,.cart textarea:focus{border-color:#43a047;box-shadow:0 0 10px rgba(67,160,71,.3);}
+.cart button{width:100%;padding:15px;background:linear-gradient(135deg,#43a047,#2e7d32);border:none;border-radius:15px;color:white;font-weight:700;font-size:1.1rem;cursor:pointer;transition:.3s;box-shadow:0 8px 25px rgba(46,125,50,.25);}
+.cart button:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(46,125,50,.35);}
+
+/* CART TOGGLE BUTTON */
+#cartToggle{
+  position: fixed;
+  top:200px;
+  right:20px;
+  background:#43a047;
+  color:white;
+  border:none;
+  border-radius:50%;
+  width:50px;
+  height:50px;
+  font-size:24px;
+  cursor:pointer;
+  z-index:10000;
+  box-shadow:0 8px 25px rgba(46,125,50,.25);
+}
+@keyframes blinkCart {
+  0% { background-color: #43a047; }
+  50% { background-color: #66bb6a; }
+  100% { background-color: #43a047; }
+}
+#cartToggle.blink{animation: blinkCart 1s infinite;}
+
+/* CONTACT/FOOTER */
+.contact{text-align:center;font-size:1rem;line-height:1.8;margin-top:40px;}
+footer{margin-top:60px;background:#1b5e20;color:white;text-align:center;padding:25px;}
+
+/* MOBILE */
+@media(max-width:900px){.hero h1{font-size:2.2rem;}.about{grid-template-columns:1fr;}.product-container{flex-direction:column;align-items:center;}.cart{position:static;margin:40px auto;width:90%;}}
 </style>
 </head>
 <body>
 
-<!-- Banner -->
-<div class="banner">
-  <p>Sharma Ji Mushroom Farm & Research Center – Fresh Mushrooms Today! | <span id="datetime"></span></p>
-</div>
+<!-- TOP BANNER -->
+<div id="topBanner">🔥 Order 5 KG or more → Get Rs 100 OFF!</div>
 
-<!-- Header -->
 <header>
-  <div class="logo">
-    <img src="images/logo.jpg" alt="Logo">
-    <div class="brand-text">
-      <span class="brand-main">Sharma Ji</span>
-      <span class="brand-sub">Mushroom Farm</span>
-      <span class="brand-tag">& Research Center</span>
-    </div>
-  </div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#products">Products</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<div class="logo"><img src="images/logo.jpg">Sharma Ji Mushroom Farm</div>
+<nav>
+<a href="#about">About</a>
+<a href="#shop">Order</a>
+<a href="#contact">Contact</a>
+</nav>
 </header>
 
-<!-- Order Method Modal -->
-<div id="orderModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeOrderModal()">&times;</span>
-    <h2>Order Details</h2>
-
-    <!-- Customer Name -->
-    <input 
-      type="text" 
-      id="customerName"
-      placeholder="👤 Your Full Name"
-      style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin:10px 0;font-size:1rem"
-      required
-    >
-
-    <!-- Phone Number -->
-    <input 
-      type="tel" 
-      id="customerPhone"
-      placeholder="📞 Phone Number"
-      style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin:10px 0;font-size:1rem"
-      required
-    >
-
-    <!-- Delivery / Pickup -->
-    <select 
-      id="orderType"
-      style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;margin:10px 0;font-size:1rem"
-    >
-      <option value="">🚚 Select Order Type</option>
-      <option value="Delivery">🚚 Home Delivery</option>
-      <option value="Pickup">🏪 Self Pickup</option>
-    </select>
-    <small style="color:#777">🚚 Delivery available in <h1> Chhinnamasta 03 (SAKHADA)</h1> area only</small>
-    <!-- Address -->
-    <textarea 
-      id="customerAddress"
-      placeholder="📍 Delivery Full Address (required for delivery)"
-      style="width:100%;height:80px;padding:10px;border-radius:8px;border:1px solid #ccc;margin:10px 0;font-size:1rem"
-    ></textarea>
-
-    <button class="order-btn" style="width:100%;margin-bottom:12px" onclick="orderWhatsApp()">
-      📱 Order via WhatsApp
-    </button>
-
-    <button class="order-btn" style="width:100%;background:#1565c0" onclick="orderEmail()">
-      📧 Order via Email
-    </button>
-  </div>
+<div class="hero">
+<h1>Premium Fresh Oyster Mushrooms Delivered Directly 🍄</h1>
 </div>
 
-
-<!-- Hero -->
-<section class="hero-custom">
-  <div class="hero-overlay">
-    <h1>Fresh Mushrooms & High-Quality Spawn from Saptari, Nepal</h1>
-  </div>
-</section>
-
-<!-- About -->
 <section id="about">
-  <h2>About Us</h2>
-  <p class="intro">We provide every information required for mushroom cultivation</p>
-  <p>At Sharma Ji Mushroom Farm & Research Center, we are dedicated to empowering farmers, entrepreneurs, and agriculture enthusiasts with complete, practical, and research-based knowledge for mushroom cultivation.
-From understanding mushroom biology to spawn production, cultivation techniques, disease management, and post-harvest handling, we provide every essential piece of information required to grow mushrooms successfully—whether you are a beginner or a commercial producer.
-Rooted in real field experience and continuous research, our mission is to promote modern, sustainable, and profitable mushroom farming. We believe that access to the right knowledge can transform livelihoods, strengthen local agriculture, and create new opportunities for income generation.
-We don’t just grow mushrooms—we grow knowledge, confidence, and success.</p>
-<p>“Growing Mushrooms. Growing Knowledge. Growing Futures.”</p>
-<img src="images/home.jpg" alt="Mushroom Cultivation">
+<h2>About Us</h2>
+<div class="about">
+<img src="images/home.jpg" alt="Mushroom cultivation">
+<p>At <b>Sharma Ji Mushroom Farm & Research Center</b>, we provide farmers and mushroom lovers complete practical cultivation knowledge and premium-quality oyster mushrooms.<br><br>
+Our mission is simple: <b>Grow Mushrooms. Grow Knowledge. Grow Futures.</b></p>
+</div>
 </section>
 
-<!-- Products -->
-<section id="products">
-  <h2>Our Products - Today's Market Prices</h2>
-  <div class="products">
-    <!-- Example Product -->
-    <div class="product">
-      <img src="images/oyster.jpg" alt="Oyster Mushroom">
-      <h3>Oyster Mushroom</h3>
-      <p>Price: Rs <span id="oysterPrice">200</span> / kg</p>
-      <div class="quantity">
-        <button onclick="decrease('oyster')">-</button>
-        <input type="number" id="oyster" value="0" min="0" readonly>
-        <button onclick="increase('oyster')">+</button>
-      </div>
-      <p>Total: Rs <span id="oysterTotal">0</span></p>
-      <button class="details-btn" onclick="openModal('oyster')">View Details</button>
-    </div>
-    <!-- Add other products here in the same structure (shiitake, button, colorful, spawn) -->
-  </div>
-  <div class="summary">Grand Total: Rs <span id="grandTotal">0</span></div>
-  <button class="order-btn" onclick="openOrderModal()">Place Order</button>
+<section id="shop">
+<h2>Order Fresh Oyster Mushroom</h2>
+<div class="product-container">
+<div class="product">
+<img src="images/oyster.jpg" alt="Oyster Mushroom">
+<h3>Oyster Mushroom</h3>
+<div class="price">Rs 200 / KG</div>
+<div class="qty">
+<button onclick="changeQty(-0.5)">-</button>
+<input id="qty" value="0" readonly>
+<button onclick="changeQty(0.5)">+</button>
+</div>
+<div class="summary">Subtotal: Rs <span id="subtotal">0</span></div>
+<div class="offer-badge" id="offerBadge">🔥 Rs 100 OFF</div>
+</div>
+</div>
 </section>
 
-<!-- Modals -->
-<div id="modal-oyster" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('oyster')">&times;</span>
-    <h2>Oyster Mushroom</h2>
-    <img src="images/oyster.jpg" alt="Oyster">
-    <p><strong>Protein:</strong> 3.3g per 100g</p>
-    <p><strong>Health Benefits:</strong> Boosts immunity, rich in antioxidants, heart & brain health</p>
-    <p><strong>Cultivation Tips:</strong> Keep spawn hygienic, temp 20–25°C, humidity 80–90%</p>
-  </div>
+<!-- FLOATING CART -->
+<div class="cart" id="cart">
+<h3>🛒 Your Cart <span class="badge" id="cartBadge" style="display:none;">0</span></h3>
+<div id="cartItems"></div>
+<div class="summary">Subtotal: Rs <span id="cartSubtotal">0</span></div>
+<select id="cartOrderType" onchange="calculateCartTotal()">
+<option value="Pickup">Self Pickup (FREE)</option>
+<option value="Delivery">Delivery (+ Rs 100)</option>
+</select>
+<div class="summary">Delivery: Rs <span id="cartDelivery">0</span></div>
+<div class="summary">Total: Rs <span id="cartFinal">0</span></div>
+<input type="text" id="customerName" placeholder="Your Name">
+<input type="tel" id="customerPhone" placeholder="Phone Number">
+<textarea id="customerAddress" placeholder="Delivery Address (inside Sakhada only)"></textarea>
+<button onclick="orderWhatsApp()">Order via WhatsApp</button>
 </div>
 
-<!-- Contact -->
+<!-- CART TOGGLE -->
+<button id="cartToggle">🛒</button>
+
 <section id="contact">
-  <h2>Contact Us</h2>
-  <div class="contact-info">
-    <p>📘 <a href="https://www.facebook.com/b11r1m" target="_blank">Facebook</a> | 
-       📸 <a href="https://www.instagram.com/b11r1m" target="_blank">Instagram</a> | 
-       💬 <a href="https://wa.me/9779810536181" target="_blank">WhatsApp</a>
-    </p>
-    <p>📍 Chhinnamasta 03, Sakhada ,Saptari, Nepal</p>
-    <p>📧 sharmajimushroom@gmail.com | 📞 +977-9810536181</p>
-  </div>
+<h2>Contact</h2>
+<div class="contact">
+📍 Chhinnamasta-03, Saptari, Nepal<br>
+📞 9810536181<br>
+📧 sharmajimushroom@gmail.com
+</div>
 </section>
 
-<!-- Footer -->
-<footer>
-  &copy; 2026 Sharma Ji Mushroom Farm & Research Center, Saptari, Nepal
-</footer>
+<footer>© 2026 Sharma Ji Mushroom Farm</footer>
 
-<!-- JS -->
 <script>
-// Date & Time
-function updateDateTime() {
-  const now = new Date();
-  document.getElementById('datetime').innerText = now.toLocaleString();
-}
-setInterval(updateDateTime,1000);
-updateDateTime();
+let price=200, qty=0;
+const offerBadge=document.getElementById("offerBadge");
+const cartEl=document.getElementById('cart');
+const cartToggle=document.getElementById('cartToggle');
 
-// Product Logic
-const prices = { oyster:200 };
-const products = ['oyster'];
-function increase(id){ document.getElementById(id).value=parseInt(document.getElementById(id).value)+1; updateTotal(id);}
-function decrease(id){ const input=document.getElementById(id); if(input.value>0) input.value=parseInt(input.value)-1; updateTotal(id);}
-function updateTotal(id){ const qty=parseInt(document.getElementById(id).value); document.getElementById(id+'Total').innerText=qty*prices[id]; updateGrandTotal();}
-function updateGrandTotal(){ let total=0; products.forEach(id=>{ total+=parseInt(document.getElementById(id).value)*prices[id]; }); document.getElementById('grandTotal').innerText=total; }
-
-// Modals
-function openModal(id){ document.getElementById('modal-'+id).style.display='flex'; }
-function closeModal(id){ document.getElementById('modal-'+id).style.display='none'; }
-window.onclick = function(e){ if(e.target.classList.contains('modal')) e.target.style.display='none'; }
-
-// Order Modal
-function openOrderModal(){ if(parseInt(document.getElementById('grandTotal').innerText)===0){alert("Please select at least one product."); return;} document.getElementById('orderModal').style.display='flex'; }
-function closeOrderModal(){ document.getElementById('orderModal').style.display='none'; }
-
-function generateOrderMessage(){
-
-  let name = document.getElementById('customerName').value.trim();
-  let phone = document.getElementById('customerPhone').value.trim();
-  let orderType = document.getElementById('orderType').value;
-  let address = document.getElementById('customerAddress').value.trim();
-
-  if(name === "" || phone === "" || orderType === ""){
-    alert("Please fill Name, Phone and Order Type.");
-    return null;
- }
-
-  if(!/^(97|98)\d{8}$/.test(phone)){
-    alert("Please enter a valid Nepali phone number.");
-    return null;
-  }
-
-  if(orderType === "Delivery" && address === ""){
-    alert("Please enter delivery address.");
-    return null;
-  }
-
-  let msg = "🧺 *New Mushroom Order*%0A%0A";
-  msg += `👤 *Name:* ${name}%0A`;
-  msg += `📞 *Phone:* ${phone}%0A`;
-  msg += `🚚 *Order Type:* ${orderType}%0A`;
-
-  if(orderType === "Delivery"){
-    msg += `📍 *Address:* ${address}%0A`;
-  }
-
-  msg += `%0A🛒 *Items:*%0A`;
-
-  let total = 0;
-  products.forEach(id=>{
-    let qty = parseInt(document.getElementById(id).value);
-    if(qty > 0){
-      let cost = qty * prices[id];
-      msg += `• ${id.toUpperCase()} — ${qty} kg → Rs ${cost}%0A`;
-      total += cost;
-    }
-  });
-
-  msg += `%0A💰 *Grand Total:* Rs ${total}`;
-  msg += `%0A%0A🙏 Sharma Ji Mushroom Farm`;
-
-  return msg;
+// Quantity change
+function changeQty(val){
+  qty=Math.max(0,qty+val);
+  document.getElementById("qty").value=qty.toFixed(1);
+  document.getElementById("subtotal").innerText=(qty*price).toFixed(0);
+  if(qty>=5){ offerBadge.style.display='block'; offerBadge.classList.add('bounce'); }
+  else{ offerBadge.style.display='none'; offerBadge.classList.remove('bounce'); }
+  updateCart();
 }
 
+// Update cart
+function updateCart(){
+  const cartItems=document.getElementById("cartItems");
+  cartItems.innerHTML="";
+  if(qty>0){
+    let discount=(qty>=5)?100:0;
+    let total=(qty*price)-discount;
+    cartItems.innerHTML=`<div class="item">
+      <img src="images/oyster.jpg">
+      <div class="info">
+        <p>Oyster Mushroom ${discount>0?'🔥 Offer Rs 100 OFF':''}</p>
+        <div class="qty-controls">
+          <button onclick="changeQty(-0.5)">-</button>
+          <span>${qty.toFixed(1)} KG</span>
+          <button onclick="changeQty(0.5)">+</button>
+        </div>
+        <p>Rs ${total.toFixed(0)}</p>
+      </div></div>`;
+    document.getElementById("cartBadge").style.display='flex';
+    document.getElementById("cartBadge").innerText=qty.toFixed(1);
+    document.getElementById("cartBadge").style.animation='none';
+    setTimeout(()=>document.getElementById("cartBadge").style.animation='pop .3s',10);
+    cartToggle.classList.add('blink');
+  } else {
+    document.getElementById("cartBadge").style.display='none';
+    cartToggle.classList.remove('blink');
+  }
+  calculateCartTotal();
+}
+
+// Totals
+function calculateCartTotal(){
+  const type=document.getElementById("cartOrderType").value;
+  let discount=(qty>=5)?100:0;
+  let subtotal=(qty*price)-discount;
+  let delivery=(type==="Delivery" && qty>0)?100:0;
+  if(type==="Delivery" && qty>0) alert("Delivery available only inside Sakhada village");
+  document.getElementById("cartSubtotal").innerText=subtotal.toFixed(0);
+  document.getElementById("cartDelivery").innerText=delivery;
+  document.getElementById("cartFinal").innerText=(subtotal+delivery).toFixed(0);
+}
+
+// WhatsApp order
 function orderWhatsApp(){
-  let message = generateOrderMessage();
-  if(message){
-    window.open(`https://wa.me/9779810536181?text=${message}`,"_blank");
+  let name=document.getElementById('customerName').value.trim();
+  let phone=document.getElementById('customerPhone').value.trim();
+  let address=document.getElementById('customerAddress').value.trim();
+  let type=document.getElementById('cartOrderType').value;
+  const phoneRegex=/^(98|97)\d{8}$/;
+  if(qty===0) return alert("Please select quantity");
+  if(name==="") return alert("Enter your name");
+  if(!phoneRegex.test(phone)) return alert("Enter valid Nepal phone number");
+  if(type==="Delivery" && address==="") return alert("Enter delivery address");
+  let discount=(qty>=5)?100:0;
+  let subtotal=(qty*price)-discount;
+  let delivery=(type==="Delivery")?100:0;
+  let total=subtotal+delivery;
+  let msg=`🍄 *New Oyster Mushroom Order*%0A
+👤 Name: ${name}%0A
+📞 Phone: ${phone}%0A
+🚚 Type: ${type}%0A`;
+  if(type==="Delivery") msg+=`📍 Address: ${address}%0A`;
+  msg+=`🧺 Quantity: ${qty.toFixed(1)} KG%0A💰 Total: Rs ${total}`;
+  window.open(`https://wa.me/9779810536181?text=${msg}`);
+}
+
+// Cart toggle & slide
+cartToggle.addEventListener('click',()=>{
+  cartEl.classList.toggle('show');
+});
+
+// Drag cart
+let isDragging=false, offsetX, offsetY;
+cartEl.addEventListener('mousedown', e=>{
+  isDragging=true;
+  offsetX=e.clientX-cartEl.offsetLeft;
+  offsetY=e.clientY-cartEl.offsetTop;
+});
+document.addEventListener('mouseup',()=>{isDragging=false;});
+document.addEventListener('mousemove', e=>{
+  if(isDragging){
+    cartEl.style.left=(e.clientX-offsetX)+'px';
+    cartEl.style.top=(e.clientY-offsetY)+'px';
+    cartEl.style.right='auto';
   }
-}
+});
 
-function orderEmail(){
-  let message = generateOrderMessage();
-  if(!message) return;
-  let body = decodeURIComponent(message).replace(/\*/g,"");
-  window.location.href =
-    `mailto:sharmajimushroom@gmail.com?subject=New Mushroom Order&body=${encodeURIComponent(body)}`;
-}
-
+document.getElementById('cartOrderType').addEventListener('change',calculateCartTotal);
 </script>
+
 </body>
 </html>
